@@ -107,8 +107,8 @@ class Settings extends ConfigFormBase {
         $msg = $this->t('Access and Refresh Tokens are not set, to get your Tokens, @link.',
           ['@link' => $link]
         );
-        // TODO fix the deprecated drupal_set_message.
-        drupal_set_message($msg, 'error');
+
+        $this->messenger()->addError($msg);
       }
 
       // TODO Figure out a nicer way to display the link. Maybe a button?

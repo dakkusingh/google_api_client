@@ -57,12 +57,10 @@ class Callback extends ControllerBase {
 
     // If token valid.
     if (isset($token['access_token'])) {
-      // TODO fix the deprecated drupal_set_message.
-      drupal_set_message($this->t('Access tokens saved'));
+      $this->messenger()->addMessage($this->t('Access tokens saved'));
     }
     else {
-      // TODO fix the deprecated drupal_set_message.
-      drupal_set_message($this->t('Failed to get access token. Check log messages.'), 'error');
+      $this->messenger()->addError($this->t('Failed to get access token. Check log messages.'));
     }
 
     return new RedirectResponse(Url::fromRoute('google_api_client.settings')->toString());
